@@ -12,13 +12,29 @@ from GRASSsetup import GRASSset
 
 resolution=0.5
 outputdir = "output/"
-datasource = ""
+datasource = "/home/ken/GIS/GRASS/"
 gisbase = "/usr/lib/grass64/"
-gisdbase = ""
+gisdbase = "/home/ken/GIS/GRASS/"
 location = "latlon"
 mapset_list = ["mx2t", "mn2t", "ssr", "tp", "2t", "sp", "par", "10v", "10u"]
 
 
+
+def quicksort(seq):
+    if len(seq) < 1:
+        return seq
+    pivot = seq[0]
+    left = []
+    right = []
+    for x in range(1, len(seq)):
+        if seq[x] <= pivot:
+            left.append(seq[x])
+        else:
+            right.append(seq[x])
+    left = quicksort(left)
+    right = quicksort(right)
+    foo = [pivot]
+    return left + foo + right
 
 def SetRegion(imap):
     if(imap == "default"):
@@ -54,7 +70,8 @@ def CalcStats(imap):
 
 def ListImap(mapset):
     datapath = "%s%s/%s/cell" % (datasource, location, mapset)
-    imaps = os.listdir(datapath)
+    lists = os.listdir(datapath)
+    imaps = quicksort(lists)
     return imaps
 
 def ReturnStatesCode():
