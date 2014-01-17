@@ -15,3 +15,7 @@ GRASS_python
 ============
 
 Python scripts handling GRASS GIS software
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/Leonhalt3141/grass_python/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
